@@ -5,12 +5,12 @@ public class ThreadNVolatile {
     // В основном потоке через 2 секунды установите флаг stop = true,
     // чтобы остановить поток.
     static int x = 0;
-    static boolean stop = false;
+    volatile static boolean stop = false;
 
     public static void main(String[] args) throws Exception{
         Thread t = new Thread(() ->
         { while(!stop) {
-            System.out.println(x++);
+            x++;
         } System.out.println("Поток остановлен");
         });
         t.start();

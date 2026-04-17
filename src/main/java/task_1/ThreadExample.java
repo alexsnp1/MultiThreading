@@ -10,7 +10,10 @@ public class ThreadExample {
             System.out.println("Привет из потока!");
             try {
                 Thread.sleep(1000);
-            } catch (InterruptedException ignored) {}
+            } catch (InterruptedException exception) {
+                Thread.currentThread().interrupt();
+                break;
+            }
         }
     });
         t.start();
